@@ -12,9 +12,8 @@ stages:
   - stage: print
     jobs:
       - job: helloworld
-        displayname: "Print-Hello"
+        displayName: "Print-Hello"
         pool:
           vmImage: ubuntu-18.04
-        environment: 'test'
         steps:
           - script: echo Hello, world!
