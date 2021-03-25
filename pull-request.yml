@@ -1,0 +1,25 @@
+trigger: none
+
+pr:
+- master
+
+variables:
+  - template: variables/vars.yml
+  
+stages:
+  - stage: publish
+    jobs:
+      - job: publish
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - publish: $(Build.SourcesDirectory)
+            artifact: cpe-artifact
+           
+  - stage: scan
+    jobs:
+      - job: lint-scan
+        template: scan/cfn-lint.yml
+        parameters:
+          artifactName: cpe-artifact
+          scanPattern: templates/*.cfn.yml

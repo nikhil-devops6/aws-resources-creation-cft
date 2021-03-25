@@ -1,0 +1,6 @@
+variables:
+  # Runtime Versions
+  cfn_lint_python_version: "3.8.x"
+  
+  # Service Connections
+  aws_credentials: cpe-aws
